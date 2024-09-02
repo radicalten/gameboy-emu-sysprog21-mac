@@ -8,21 +8,12 @@ CFLAGS += -D ENABLE_SOUND
 CFLAGS += `sdl2-config --cflags`
 LDFLAGS += `sdl2-config --libs`
 
-# Control the build verbosity
-ifeq ("$(VERBOSE)","1")
-    Q :=
-    VECHO = @true
-else
-    Q := @
-    VECHO = @printf
-endif
-
 OUT ?= build
 SHELL_HACK := $(shell mkdir -p $(OUT))
 
 BIN = $(OUT)/emu $(OUT)/bench
 
-all: $(GBIT_LIB_C) $(BIN)
+all: $(BIN)
 
 OBJS = \
 	apu.o \
